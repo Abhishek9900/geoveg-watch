@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  /*
+   * Cool neutral slate dark theme. Earlier warm brown/khaki/olive palettes were
+   * flagged twice as unappealing, so this iteration deliberately uses no warm
+   * background tones at all -- pure neutral grays with cool-leaning accent colors.
+   */
+  --bg: #14171c;
+  --bg-panel: #1b1f26;
+  --bg-panel-raised: #242933;
+  --line: #343b47;
+  --text: #eef1f5;
+  --text-dim: #aab2c0;
+  --text-faint: #6b7280;
+
+  --accent: #5ec48f;        /* clean green, cool-leaning rather than olive */
+  --accent-strong: #36a06a;
+  --loss: #e0654f;          /* coral-red, not terracotta/rust */
+  --loss-strong: #c8472f;
+  --water: #4da3e0;         /* clear blue */
+  --moisture: #3fb5c4;      /* cyan-teal */
+  --burn: #e0a23f;          /* amber, distinct from loss */
+  --sar: #9d8fd9;           /* violet-gray, distinct identity for the radar layer */
+
+  --font-display: "Space Grotesk", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  font-feature-settings: "tnum";
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* MapLibre control chrome, restyled to match the instrument-panel aesthetic. */
+.maplibregl-ctrl-group {
+  background-color: var(--bg-panel-raised) !important;
+  border: 1px solid var(--line) !important;
+}
+
+.maplibregl-ctrl button {
+  background-color: transparent !important;
+}
+
+.maplibregl-ctrl button:not(:disabled):hover {
+  background-color: var(--bg-panel) !important;
+}
+
+.maplibregl-ctrl-attrib {
+  background-color: rgba(28, 25, 20, 0.7) !important;
+  color: var(--text-faint) !important;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: var(--text-dim) !important;
+}
+
+.maplibregl-popup-content {
+  background: var(--bg-panel-raised);
+  color: var(--text);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

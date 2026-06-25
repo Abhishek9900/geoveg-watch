@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+*.egg-info/
+dist/
+.ruff_cache/
+
+# Node
+node_modules/
+.next/
+out/
+.npm/
+coverage/
+.eslintcache
+*.tsbuildinfo
+*.swc/
+*swc/
+
+# Env files
+.env
+.env.local
+.env.production
+
+# macOS
+.DS_Store
+__MACOSX/
+*.swp
+
+# Logs
+backend/logs/*.log
+
+# Editor
+.vscode/settings.json
+.idea/
+
+# Test coverage
+.coverage
+htmlcov/
+coverage/

@@ -1,0 +1,40 @@
+services:
+  backend:
+    build:
+      context: ./geoveg-backend
+      dockerfile: Dockerfile
+    container_name: geoveg-backend
+    restart: unless-stopped
+    environment:
+      - ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,http://frontend:3000
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - skynet
+  frontend:
+    build:
+      context: ./geoveg-watch
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
+    container_name: geoveg-frontend
+    restart: unless-stopped
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - skynet
+
+networks:
+  skynet:
+    driver: bridge
+    name: skynet
